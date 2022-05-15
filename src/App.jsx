@@ -13,7 +13,7 @@ function App () {
       <div>
 
         {/* <DisplayTimer /> */}
-        <Timer time={20} />
+        <Timer />
         <p>
           <button type='button' onClick={() => setCount((count) => count + 1)}>
             count is: {count}
