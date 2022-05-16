@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import DisplayTimer from '../DisplayTimer'
+import FormTimer from '../FormTimer'
 export default function Timer () {
   const [min, setMin] = useState(0)
   const [sec, setSec] = useState(0)
@@ -56,12 +57,9 @@ export default function Timer () {
 
   return (
     <>
+      <FormTimer handleChangeMin={handleChangeMin} handleChangeSec={handleChangeSec} />
       <DisplayTimer minutes={minutes} seconds={seconds} />
 
-      min
-      <input type='text' onChange={handleChangeMin} />
-      sec
-      <input type='text' onChange={handleChangeSec} />
       {
         !timerOn ? <button onClick={handleStart}>iniciar</button> : <button onClick={handlePause}>parar</button>
       }
