@@ -1,12 +1,7 @@
-import { useState } from 'react'
-// import DisplayTimer from './components/DisplayTimer'
-
 import './App.css'
-import Timer from './components/Timer'
+import Timer from './pages/Timer'
 
 function App () {
-  const [count, setCount] = useState(0)
-
   return (
     <div className='App'>
 
@@ -14,11 +9,7 @@ function App () {
 
         {/* <DisplayTimer /> */}
         <Timer />
-        <p>
-          <button type='button' onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
+
       </div>
 
     </div>

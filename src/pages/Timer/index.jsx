@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import DisplayTimer from '../DisplayTimer'
-import FormTimer from '../FormTimer'
+import DisplayTimer from '../../components/DisplayTimer'
+import FormTimer from '../../components/FormTimer'
 export default function Timer () {
   const [min, setMin] = useState(0)
   const [sec, setSec] = useState(0)
