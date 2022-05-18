@@ -40,7 +40,12 @@ export default function Timer () {
 
   const handleReset = () => {
     setTimerOn(false)
-    setTimeState(0)
+    // setTimeState(0)
+    const timeSetted = +min + +sec
+    setTimeState(timeSetted)
+  }
+  const handleEdit = () => {
+    console.log('hello world')
   }
   useEffect(() => {
     if (timerOn) {
@@ -65,6 +70,7 @@ export default function Timer () {
       }
 
       <button onClick={handleReset}>Reset</button>
+      <button onClick={handleEdit}>Edit</button>
 
     </>
 
