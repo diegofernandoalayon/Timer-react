@@ -68,6 +68,7 @@ export default function Timer () {
   // extraer los segundo y minutos para mostrar
   const minutes = Math.floor((timeState % (60 * 60)) / (60))
   const seconds = Math.floor((timeState % 60))
+  document.title = `${minutes}:${seconds} Timer`
 
   return (
     <>

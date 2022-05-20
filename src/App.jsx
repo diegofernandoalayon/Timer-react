@@ -3,7 +3,7 @@ import Timer from './pages/Timer'
 
 function App () {
   return (
-    <div className='App'>
+    <article className='App'>
 
       <div>
 
@@ -12,7 +12,7 @@ function App () {
 
       </div>
 
-    </div>
+    </article>
   )
 }
 
