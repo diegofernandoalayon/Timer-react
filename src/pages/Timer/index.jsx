@@ -28,9 +28,10 @@ export default function Timer () {
   }
   const handleStart = () => {
     setTimerOn(true)
-    const timeSetted = +min + +sec
-    if (timeState === 0) {
+    if (min || sec !== 0) {
+      const timeSetted = +min + +sec
       setTimeState(timeSetted)
+      window.localStorage.setItem('user-settings', JSON.stringify({ time: timeSetted }))
     }
   }
 
@@ -47,6 +48,14 @@ export default function Timer () {
   const handleEdit = () => {
     console.log('hello world')
   }
+  useEffect(() => {
+    const userSettings = window.localStorage.getItem('user-settings')
+    if (userSettings) {
+      const { time } = JSON.parse(userSettings)
+
+      setTimeState(time)
+    }
+  }, [])
   useEffect(() => {
     if (timerOn) {
       startTimer()
