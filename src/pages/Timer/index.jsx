@@ -1,11 +1,12 @@
+// react
 import { useState, useEffect, useRef } from 'react'
+// components
 import DisplayTimer from '../../components/DisplayTimer'
 import FormTimer from '../../components/FormTimer'
 export default function Timer () {
-  const [min, setMin] = useState(0)
-  const [sec, setSec] = useState(0)
   const [timeState, setTimeState] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
   const interval = useRef(0)
   let con = 0
   const startTimer = () => {
@@ -14,25 +15,15 @@ export default function Timer () {
       const dis = timeState - con
       if (dis <= 0) {
         clearInterval(interval.current)
+        setTimerOn(false)
       }
       setTimeState(dis)
     }, 1000)
   }
 
-  const handleChangeSec = (event) => {
-    setSec(event.target.value)
-  }
-  const handleChangeMin = (event) => {
-    const minToSec = event.target.value * 60
-    setMin(minToSec)
-  }
   const handleStart = () => {
     setTimerOn(true)
-    if (min || sec !== 0) {
-      const timeSetted = +min + +sec
-      setTimeState(timeSetted)
-      window.localStorage.setItem('user-settings', JSON.stringify({ time: timeSetted }))
-    }
+    setIsEdit(false)
   }
 
   const handlePause = () => {
@@ -42,11 +33,13 @@ export default function Timer () {
   const handleReset = () => {
     setTimerOn(false)
     // setTimeState(0)
-    const timeSetted = +min + +sec
-    setTimeState(timeSetted)
+    // const timeSetted = +min + +sec
+    // setTimeState(timeSetted)
+    setTimeState(0)
   }
   const handleEdit = () => {
     console.log('hello world')
+    setIsEdit(true)
   }
   useEffect(() => {
     const userSettings = window.localStorage.getItem('user-settings')
@@ -72,15 +65,22 @@ export default function Timer () {
 
   return (
     <>
-      <FormTimer handleChangeMin={handleChangeMin} handleChangeSec={handleChangeSec} />
-      <DisplayTimer minutes={minutes} seconds={seconds} />
-
       {
-        !timerOn ? <button onClick={handleStart}>iniciar</button> : <button onClick={handlePause}>parar</button>
+        isEdit
+          ? <FormTimer setTimeState={setTimeState} handleStart={handleStart} />
+          : <DisplayTimer minutes={minutes} seconds={seconds} />
+      }
+      {
+        !isEdit && (!timerOn ? <button onClick={handleStart}>iniciar</button> : <button onClick={handlePause}>parar</button>)
+
       }
 
-      <button onClick={handleReset}>Reset</button>
-      <button onClick={handleEdit}>Edit</button>
+      {
+        !isEdit && <button onClick={handleReset}>Reset</button>
+      }
+      {
+        !isEdit && <button onClick={handleEdit}>Edit</button>
+      }
 
     </>
 
