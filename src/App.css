@@ -15,3 +15,18 @@
   background-color: black;
 }
 
+@media (prefers-color-scheme: dark) {
+  #root{
+    background-color:black;
+  }
+  
+}
+@media (prefers-color-scheme: light) {
+  #root{
+    background-color: #eee;
+    color: white;
+  }
+  h1,h2,h3,p,div{
+    color: black;
+  }
+}
