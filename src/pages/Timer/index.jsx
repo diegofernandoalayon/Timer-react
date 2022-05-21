@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import DisplayTimer from '../../components/DisplayTimer'
 import FormTimer from '../../components/FormTimer'
 export default function Timer () {
+  const [timerReset, setTimerReset] = useState(0)
   const [timeState, setTimeState] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
@@ -35,10 +36,9 @@ export default function Timer () {
     // setTimeState(0)
     // const timeSetted = +min + +sec
     // setTimeState(timeSetted)
-    setTimeState(0)
+    setTimeState(timerReset)
   }
   const handleEdit = () => {
-    console.log('hello world')
     setIsEdit(true)
   }
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function Timer () {
     <>
       {
         isEdit
-          ? <FormTimer setTimeState={setTimeState} handleStart={handleStart} />
+          ? <FormTimer setTimeState={setTimeState} handleStart={handleStart} setTimerReset={setTimerReset} />
           : <DisplayTimer minutes={minutes} seconds={seconds} />
       }
       {

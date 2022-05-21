@@ -2,7 +2,7 @@
 import { useState } from 'react'
 // styles
 import './formTimer.css'
-export default function FormTimer ({ setTimeState, handleStart }) {
+export default function FormTimer ({ setTimeState, handleStart, setTimerReset }) {
   const [min, setMin] = useState(0)
   const [sec, setSec] = useState(0)
   const handleSubmit = (event) => {
@@ -10,6 +10,7 @@ export default function FormTimer ({ setTimeState, handleStart }) {
     if (min || sec !== 0) {
       const timeSetted = +min + +sec
       setTimeState(timeSetted)
+      setTimerReset(timeSetted)
       window.localStorage.setItem('user-settings', JSON.stringify({ time: timeSetted }))
     }
     handleStart()
