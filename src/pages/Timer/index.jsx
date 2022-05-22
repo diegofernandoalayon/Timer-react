@@ -1,5 +1,6 @@
 // react
 import { useState, useEffect, useRef } from 'react'
+import Button from '../../components/Button'
 // components
 import DisplayTimer from '../../components/DisplayTimer'
 import FormTimer from '../../components/FormTimer'
@@ -85,7 +86,7 @@ export default function Timer () {
         !isEdit && <button onClick={handleReset}>Reset</button>
       }
       {
-        !isEdit && <button onClick={handleEdit}>Edit</button>
+        !isEdit && <Button onClick={handleEdit}>Edit</Button>
       }
 
     </article>

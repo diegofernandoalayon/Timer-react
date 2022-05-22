@@ -5,6 +5,7 @@
 }
 :root{
   --border : 8px;
+  --color-primary: greenyellow;
 }
 .App {
   height: 100vh;
