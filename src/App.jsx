@@ -5,12 +5,8 @@ function App () {
   return (
     <article className='App'>
 
-      <div>
-
-        {/* <DisplayTimer /> */}
-        <Timer />
-
-      </div>
+      {/* <DisplayTimer /> */}
+      <Timer />
 
     </article>
   )

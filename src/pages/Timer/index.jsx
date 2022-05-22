@@ -47,6 +47,7 @@ export default function Timer () {
       const { time } = JSON.parse(userSettings)
 
       setTimeState(time)
+      setTimerReset(time)
     }
   }, [])
   useEffect(() => {
@@ -64,10 +65,15 @@ export default function Timer () {
   document.title = `${minutes}:${seconds} Timer`
 
   return (
-    <>
+    <article>
       {
         isEdit
-          ? <FormTimer setTimeState={setTimeState} handleStart={handleStart} setTimerReset={setTimerReset} />
+          ? <FormTimer
+              setTimeState={setTimeState}
+              handleStart={handleStart}
+              setTimerReset={setTimerReset}
+              setIsEdit={setIsEdit}
+            />
           : <DisplayTimer minutes={minutes} seconds={seconds} />
       }
       {
@@ -82,7 +88,7 @@ export default function Timer () {
         !isEdit && <button onClick={handleEdit}>Edit</button>
       }
 
-    </>
+    </article>
 
   )
 }

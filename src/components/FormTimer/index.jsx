@@ -2,7 +2,7 @@
 import { useState } from 'react'
 // styles
 import './formTimer.css'
-export default function FormTimer ({ setTimeState, handleStart, setTimerReset }) {
+export default function FormTimer ({ setTimeState, handleStart, setTimerReset, setIsEdit }) {
   const [min, setMin] = useState(0)
   const [sec, setSec] = useState(0)
   const handleSubmit = (event) => {
@@ -23,6 +23,10 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset })
     const minToSec = event.target.value * 60
     setMin(minToSec)
   }
+  const handleCancel = () => {
+    console.log('to')
+    setIsEdit(false)
+  }
   return (
     <article className='form-timer'>
       <h3>Set Timer</h3>
@@ -33,6 +37,7 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset })
         <input type='text' onChange={handleChangeSec} />
         <button>Establecer</button>
       </form>
+      <button onClick={handleCancel}>Cancelar</button>
     </article>
   )
 }
