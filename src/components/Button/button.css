@@ -7,5 +7,9 @@
   font-weight: 400;
   padding: 0.3em;
   border-radius: var(--border);
+  cursor: pointer;
 
+}
+.btn:hover{
+  opacity: 0.8;
 }

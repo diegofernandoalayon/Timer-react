@@ -1,9 +1,11 @@
 // react
 import { useState, useEffect, useRef } from 'react'
-import Button from '../../components/Button'
 // components
+import Button from '../../components/Button'
 import DisplayTimer from '../../components/DisplayTimer'
 import FormTimer from '../../components/FormTimer'
+// stylesheet
+import './timer.css'
 export default function Timer () {
   const [timerReset, setTimerReset] = useState(0)
   const [timeState, setTimeState] = useState(0)
@@ -77,17 +79,20 @@ export default function Timer () {
             />
           : <DisplayTimer minutes={minutes} seconds={seconds} />
       }
-      {
-        !isEdit && (!timerOn ? <button onClick={handleStart}>iniciar</button> : <button onClick={handlePause}>parar</button>)
+      <div className='btn-timer'>
+        {
+          !isEdit && (!timerOn ? <Button onClick={handleStart}>iniciar</Button> : <Button onClick={handlePause}>parar</Button>)
 
-      }
+        }
 
-      {
-        !isEdit && <button onClick={handleReset}>Reset</button>
-      }
-      {
-        !isEdit && <Button onClick={handleEdit}>Edit</Button>
-      }
+        {
+          !isEdit && <Button onClick={handleReset}>Reset</Button>
+        }
+        {
+          !isEdit && <Button onClick={handleEdit}>Edit</Button>
+        }
+
+      </div>
 
     </article>
 

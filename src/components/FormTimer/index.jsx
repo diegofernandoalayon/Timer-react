@@ -1,5 +1,7 @@
 // react
 import { useState } from 'react'
+// components
+import Button from '../Button'
 // styles
 import './formTimer.css'
 export default function FormTimer ({ setTimeState, handleStart, setTimerReset, setIsEdit }) {
@@ -37,7 +39,7 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset, s
         <input type='text' onChange={handleChangeSec} />
         <button>Establecer</button>
       </form>
-      <button onClick={handleCancel}>Cancelar</button>
+      <Button onClick={handleCancel}>Cancelar</Button>
     </article>
   )
 }
