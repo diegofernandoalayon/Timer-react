@@ -81,7 +81,10 @@ export default function Timer () {
       }
       <div className='btn-timer'>
         {
-          !isEdit && (!timerOn ? <Button onClick={handleStart}>iniciar</Button> : <Button onClick={handlePause}>parar</Button>)
+          !isEdit &&
+          (!timerOn
+            ? <Button onClick={handleStart}>iniciar</Button>
+            : <Button onClick={handlePause} isPaused>parar</Button>)
 
         }
 

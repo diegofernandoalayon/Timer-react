@@ -37,7 +37,7 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset, s
         <input type='text' onChange={handleChangeMin} />
         sec
         <input type='text' onChange={handleChangeSec} />
-        <button>Establecer</button>
+        <Button>Establecer</Button>
       </form>
       <Button onClick={handleCancel}>Cancelar</Button>
     </article>

@@ -6,6 +6,7 @@
 :root{
   --border : 8px;
   --color-primary: greenyellow;
+  --color-secondary: #FF4528 ;
   --gap-buttons: 0.4em;
 }
 .App {
