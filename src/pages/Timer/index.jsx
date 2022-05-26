@@ -76,6 +76,8 @@ export default function Timer () {
               handleStart={handleStart}
               setTimerReset={setTimerReset}
               setIsEdit={setIsEdit}
+              minutes={minutes}
+              seconds={seconds}
             />
           : <DisplayTimer minutes={minutes} seconds={seconds} />
       }
