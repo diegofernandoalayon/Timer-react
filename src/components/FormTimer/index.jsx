@@ -9,16 +9,16 @@ import './formTimer.css'
 export default function FormTimer ({ setTimeState, handleStart, setTimerReset, setIsEdit, minutes, seconds }) {
   const [min, setMin] = useState(minutes * 60)
   const [sec, setSec] = useState(seconds)
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   if (min || sec !== 0) {
-  //     const timeSetted = +min + +sec
-  //     setTimeState(timeSetted)
-  //     setTimerReset(timeSetted)
-  //     window.localStorage.setItem('user-settings', JSON.stringify({ time: timeSetted }))
-  //   }
-  //   handleStart()
-  // }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    if (min || sec !== 0) {
+      const timeSetted = +min + +sec
+      setTimeState(timeSetted)
+      setTimerReset(timeSetted)
+      window.localStorage.setItem('user-settings', JSON.stringify({ time: timeSetted }))
+    }
+    handleStart()
+  }
 
   const handleChangeSec = (event) => {
     setSec(event.target.value)
@@ -35,16 +35,27 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset, s
   return (
     <article className='form-timer'>
       <h3>Set Timer</h3>
+      <div>
+        <span>min</span>
+        <div>
+          <input type='text' onChange={handleChangeMin} value={min / 60} />
+          <Up />
+          <Down />
+        </div>
+      </div>
 
-      min
-      <input type='text' onChange={handleChangeMin} value={min / 60} />
-      sec
-      <input type='text' onChange={handleChangeSec} value={sec} />
+      <div>
+        <span>sec</span>
+        <div>
+          <input type='text' onChange={handleChangeSec} value={sec} />
+          <Up />
+          <Down />
+        </div>
+      </div>
+
       <div>
         <Button onClick={handleCancel}>Cancelar</Button>
-        <Button>Establecer</Button>
-        <Up />
-        <Down />
+        <Button onClick={handleSubmit}>Establecer</Button>
       </div>
     </article>
   )
