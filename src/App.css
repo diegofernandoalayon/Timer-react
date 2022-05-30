@@ -8,6 +8,8 @@
   --color-primary: greenyellow;
   --color-secondary: #FF4528 ;
   --gap-buttons: 0.4em;
+  --font-weight: 400;
+  --font-family: 'Black Ops One', cursive;
 }
 .App {
   height: 100vh;
