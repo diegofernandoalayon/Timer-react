@@ -1,18 +1,26 @@
-// react
-import { useState } from 'react'
 // components
 import Button from '../Button'
-import Up from '../Icons/Up'
-import Down from '../Icons/Down'
+import InputTimerForm from '../InputTimerForm'
+// custom hooks
+import useForm from '../../hooks/useForm'
 // styles
 import './formTimer.css'
-export default function FormTimer ({ setTimeState, handleStart, setTimerReset, setIsEdit, minutes, seconds }) {
-  const [min, setMin] = useState(minutes * 60)
-  const [sec, setSec] = useState(seconds)
+export default function FormTimer ({ setTimeState, handleStart, setTimerReset, setIsEdit, initialMinutes, initialSeconds }) {
+  const {
+    minutes,
+    seconds,
+    updateMinutes,
+    updateSeconds,
+    incrementMinutes,
+    decrementMinutes,
+    incrementSeconds,
+    decrementSeconds
+  } = useForm({ initialMinutes, initialSeconds })
+  console.log('minutes', minutes, 'seconds', seconds)
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (min || sec !== 0) {
-      const timeSetted = +min + +sec
+    if (minutes || seconds !== 0) {
+      const timeSetted = +minutes * 60 + +seconds
       setTimeState(timeSetted)
       setTimerReset(timeSetted)
       window.localStorage.setItem('user-settings', JSON.stringify({ time: timeSetted }))
@@ -20,40 +28,32 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset, s
     handleStart()
   }
 
-  const handleChangeSec = (event) => {
-    setSec(event.target.value)
-  }
-  const handleChangeMin = (event) => {
-    const minToSec = event.target.value * 60
-    setMin(minToSec)
-  }
   const handleCancel = () => {
     console.log('to')
     setIsEdit(false)
   }
-  console.log(min)
+  console.log(minutes)
   return (
     <article className='form-timer'>
       <h3>Set Timer</h3>
-      <div>
-        <span>min</span>
-        <div>
-          <input type='text' onChange={handleChangeMin} value={min / 60} />
-          <Up />
-          <Down />
-        </div>
+      <div className='form-timer-inputs'>
+        <InputTimerForm
+          title='minutes'
+          value={minutes}
+          update={updateMinutes}
+          up={incrementMinutes}
+          down={decrementMinutes}
+        />
+        <InputTimerForm
+          title='seconds'
+          value={seconds}
+          update={updateSeconds}
+          up={incrementSeconds}
+          down={decrementSeconds}
+        />
       </div>
 
-      <div>
-        <span>sec</span>
-        <div>
-          <input type='text' onChange={handleChangeSec} value={sec} />
-          <Up />
-          <Down />
-        </div>
-      </div>
-
-      <div>
+      <div className='from-timer-buttons'>
         <Button onClick={handleCancel}>Cancelar</Button>
         <Button onClick={handleSubmit}>Establecer</Button>
       </div>
