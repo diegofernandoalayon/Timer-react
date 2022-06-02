@@ -1,10 +1,13 @@
 .form-timer{
   background-color: rgba(255,255,255,0.2);
   border-radius: var(--border);
+  display: grid;
   padding: 20px;
-  
-  width: 400px;
 }
-.form-timer input{
-  width: 40px;
+.form-timer h3{
+  font-weight: var(--font-weight);
+}
+.form-timer-inputs{
+  display: flex;
+  justify-content: space-around;
 }
