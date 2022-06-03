@@ -55,7 +55,8 @@ const useForm = ({ initialMinutes = 0, initialSeconds = 0 } = {}) => {
     updateSeconds: (seconds) => dispatch({ type: ACTIONS.UPDATE_SECONDS, payload: seconds }),
     incrementMinutes: () => dispatch({ type: ACTIONS.INCREMENT_MINUTES }),
     incrementSeconds: () => dispatch({ type: ACTIONS.INCREMENT_SECONDS }),
-    decrementMinutes: () => dispatch({ type: ACTIONS.DECREMENT_MINUTES })
+    decrementMinutes: () => dispatch({ type: ACTIONS.DECREMENT_MINUTES }),
+    decrementSeconds: () => dispatch({ type: ACTIONS.DECREMENT_SECONDS })
   }
 }
 
