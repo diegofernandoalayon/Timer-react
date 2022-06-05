@@ -16,7 +16,6 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset, s
     incrementSeconds,
     decrementSeconds
   } = useForm({ initialMinutes, initialSeconds })
-  console.log('minutes', minutes, 'seconds', seconds)
   const handleSubmit = (event) => {
     event.preventDefault()
     if (minutes || seconds !== 0) {
@@ -29,10 +28,8 @@ export default function FormTimer ({ setTimeState, handleStart, setTimerReset, s
   }
 
   const handleCancel = () => {
-    console.log('to')
     setIsEdit(false)
   }
-  console.log(minutes)
   return (
     <article className='form-timer'>
       <h3>Set Timer</h3>

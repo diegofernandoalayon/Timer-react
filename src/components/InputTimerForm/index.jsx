@@ -6,7 +6,11 @@ import './inputTimerForm.css'
 export default function InputTimerForm ({ title, value, update, up, down } = {}) {
   const handleChange = (event) => {
     const { value } = event.target
-    update(value)
+    if (+value > 59) {
+      update(59)
+    } else {
+      update(+value)
+    }
   }
   return (
     <>
