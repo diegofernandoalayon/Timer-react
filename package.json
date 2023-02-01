@@ -17,9 +17,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "./node_modules/standard/eslintrc.json",
-      "react-app/jest",
-      "react-app"
+      "standard"
     ]
   },
   "devDependencies": {
