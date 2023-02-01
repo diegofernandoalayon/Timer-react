@@ -17,7 +17,9 @@
   },
   "eslintConfig": {
     "extends": [
-      "standard"
+      "standard",
+      "plugin:react/recommended",
+      "plugin:react/jsx-runtime"
     ]
   },
   "devDependencies": {
