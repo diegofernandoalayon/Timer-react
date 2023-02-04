@@ -45,6 +45,7 @@ export default function Timer () {
   const handleEditSetted = (time) => {
     setTimeState(time)
     setTimerReset(time)
+    window.localStorage.setItem('user-settings', JSON.stringify({ time }))
   }
   useEffect(() => {
     const userSettings = window.localStorage.getItem('user-settings')

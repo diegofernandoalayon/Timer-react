@@ -5,7 +5,7 @@ import TimeInput from '../TimeInput'
 import useForm from '../../hooks/useForm'
 // styles
 import './timeForm.css'
-const TimeForm = ({ initialMinutes, initialSeconds, title }) => {
+const TimeForm = ({ initialMinutes, initialSeconds, title, handleEdit, handleStart, handleEditSetted }) => {
   const {
     minutes,
     seconds,
@@ -19,9 +19,11 @@ const TimeForm = ({ initialMinutes, initialSeconds, title }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-  }
-  const handleCancel = () => {
-
+    if (minutes || seconds !== 0) {
+      const timeSetted = +minutes * 60 + +seconds
+      handleEditSetted(timeSetted)
+    }
+    handleStart()
   }
   return (
     <form
@@ -50,8 +52,8 @@ const TimeForm = ({ initialMinutes, initialSeconds, title }) => {
       <div
         className='buttons-form'
       >
-        <Button onClick={handleCancel}>Cancelar</Button>
-        <Button onClick={handleSubmit}>Establecer</Button>
+        <Button onClick={handleEdit}>Cancelar</Button>
+        <Button submit onClick={handleSubmit}>Establecer</Button>
       </div>
     </form>
   )
