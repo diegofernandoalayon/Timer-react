@@ -1,0 +1,25 @@
+.input-container{
+  display: flex;
+  flex-direction: column;
+}
+.input-container span{
+  text-align: left;
+  font-weight: var(--font-weight);
+}
+.input-container div{
+  display: flex;
+}
+.input-container input{
+  border: none;
+  width: 3em;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  /* background-color: var(--background-color); */
+  color: var(--color-primary);
+  background-color: rgba(0,0,0,0.3);
+  padding: 0.5em
+}
+.input-container div div{
+  display: flex;
+  flex-direction: column;
+}
