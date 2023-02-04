@@ -20,7 +20,10 @@
       "standard",
       "plugin:react/recommended",
       "plugin:react/jsx-runtime"
-    ]
+    ],
+    "rules":{
+      "react/prop-types": 0
+    }
   },
   "devDependencies": {
     "@testing-library/dom": "^8.13.0",
