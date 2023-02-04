@@ -9,7 +9,9 @@
   --color-secondary: #FF4528 ;
   --gap-buttons: 0.4em;
   --font-weight: 400;
-  --font-family: 'Black Ops One', cursive;
+  --font-family: 'clockicons', cursive;
+  --font-family-two: 'Black Ops One', cursive;
+  --font-family-text: 'Open Sans', sans-serif;
 }
 .App {
   height: 100vh;
@@ -17,12 +19,20 @@
   display: grid;
   place-items: center;
   color: greenyellow;
+  font-family: var(--font-family-text);
   
 }
 .App h2{
   font-weight: 400;
   font-size: 8em;
+  font-family: var(--font-family);
 }
+/* .App aside{
+  position: absolute;
+  left: 0;
+  height: 100%;
+  border: 1px solid red;
+} */
 
 #root{
   background-color: black;
