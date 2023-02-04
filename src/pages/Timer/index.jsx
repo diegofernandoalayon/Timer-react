@@ -3,7 +3,8 @@ import { useState, useEffect, useRef } from 'react'
 // components
 import Button from '../../components/Button'
 import DisplayTimer from '../../components/DisplayTimer'
-import FormTimer from '../../components/FormTimer'
+import TimeForm from '../../components/TimeForm'
+// import FormTimer from '../../components/FormTimer'
 // stylesheet
 import './timer.css'
 export default function Timer () {
@@ -36,13 +37,14 @@ export default function Timer () {
 
   const handleReset = () => {
     setTimerOn(false)
-    // setTimeState(0)
-    // const timeSetted = +min + +sec
-    // setTimeState(timeSetted)
     setTimeState(timerReset)
   }
   const handleEdit = () => {
-    setIsEdit(true)
+    setIsEdit((ac) => !ac)
+  }
+  const handleEditSetted = (time) => {
+    setTimeState(time)
+    setTimerReset(time)
   }
   useEffect(() => {
     const userSettings = window.localStorage.getItem('user-settings')
@@ -71,11 +73,11 @@ export default function Timer () {
     <article>
       {
         isEdit
-          ? <FormTimer
-              setTimeState={setTimeState}
+          ? <TimeForm
+              title='Set Timer'
               handleStart={handleStart}
-              setTimerReset={setTimerReset}
-              setIsEdit={setIsEdit}
+              handleEditSetted={handleEditSetted}
+              handleEdit={handleEdit}
               initialMinutes={minutes}
               initialSeconds={seconds}
             />
