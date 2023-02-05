@@ -34,3 +34,10 @@
   transform: scale(1.1) rotate(2deg);
 
 }
+.active{
+  opacity:0.9;
+  transform: scale(1.1) rotate(-2deg) ;
+}
+.active a{
+  color: var(--color-secondary) !important;
+}
