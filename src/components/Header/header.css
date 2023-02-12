@@ -1,0 +1,42 @@
+.header{
+  background-color: #e03838;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.header-navbar{
+  position:absolute;
+  left: -1000px;
+  transition: ease 0.5s;
+}
+
+.header-buttons{
+  border: none;
+  display: block;
+  left: 4px;
+  position:absolute;
+  top: 4px;
+  visibility: visible;
+  z-index: 1;
+  color: var(--color-primary);
+}
+.header-buttons button{
+  border: none;
+  border-radius: var(--border);
+  background-color: var(--color-bg-button-menu);
+}
+.header-mobile{
+  left: 0;
+}
+
+@media screen and (min-width: 900px){
+
+  .header-navbar{
+    visibility: visible;
+    left: 0;
+  }
+  .header-buttons{
+    visibility: hidden;
+  }
+}
