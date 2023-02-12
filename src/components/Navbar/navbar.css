@@ -1,16 +1,15 @@
 .nav-bar{
-  position: absolute;
-  left: 0;
-  height: 100vh;
-  background-color: #111;
-  padding: 0 1rem;
+  background-color: var(--color-bg-navbar);
   display: flex;
-  font-weight: 400;
-  font-size: 1.5rem;
   font-family: var(--font-family-two);
-  /* place-content: center; */
+  font-size: 1.5rem;
+  font-weight: 400;
+  height: 100vh;
+  justify-content: center;   
+  left: 0;
+  padding: 0 1rem;
   place-items: center;
-
+  width: 100vw;
 }
 .nav-bar ul{
   display: flex;
@@ -40,4 +39,15 @@
 }
 .active a{
   color: var(--color-secondary) !important;
+}
+@media screen and (min-width: 400px){
+  .nav-bar{
+    width: 80vw;
+  }
+}
+@media screen and (min-width: 900px){
+
+  .nav-bar{
+    width: auto;
+  }
 }

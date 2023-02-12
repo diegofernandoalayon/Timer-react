@@ -3,12 +3,13 @@ import './navbar.css'
 import { useState } from 'react'
 // import { useRef } from 'react'
 const ITEMS_NAV = ['chronometer', 'timer', 'countdown']
-const Navbar = () => {
+const Navbar = ({ handleOptionSelected }) => {
   const [activeTab, setActiveTab] = useState(null)
   const handle = (item) => {
     setActiveTab(item)
+    handleOptionSelected()
   }
-  console.log('casas casac acsacasa')
+
   return (
     <nav className="nav-bar">
       <ul>

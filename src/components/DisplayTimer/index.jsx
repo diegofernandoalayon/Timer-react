@@ -4,7 +4,7 @@ export default function DisplayTimer ({ minutes, seconds }) {
   }
   return (
     <>
-      <h2>{addZero(minutes)}:{addZero(seconds)}</h2>
+      <h2 style={{ color: 'var(--color-primary)' }}>{addZero(minutes)}:{addZero(seconds)}</h2>
     </>
   )
 }
