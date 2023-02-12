@@ -1,5 +1,5 @@
 const Menu = (props) => {
-  return(
+  return (
 
     <svg
       height={21}

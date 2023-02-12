@@ -2,7 +2,7 @@
 // import { useNavigate } from 'react-router-dom'
 import './App.css'
 import { Outlet } from 'react-router'
-import Navbar from './components/Navbar'
+import Header from './components/Header'
 
 function App () {
   // const navigate = useNavigate()
@@ -12,7 +12,7 @@ function App () {
   // },[])
   return (
     <article className="App">
-      <Navbar />
+      <Header />
       <Outlet />
     </article>
   )

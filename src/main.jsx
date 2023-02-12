@@ -5,11 +5,14 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 import './index.css'
 import Timer from './pages/Timer'
+// import TimeForm from './components/TimeForm'
+import Chronometer from './pages/Chronometer'
+// import TimeInput from './components/TimeInput'
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <Navigate to='/casa'/>,
+    errorElement: <Navigate to='/chronometer'/>,
     children: [
       {
         path: '/timer',
@@ -17,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/chronometer/',
-        element: <h1>casita</h1>
+        element: <Chronometer />
       },
       {
         path: '/countdown',

@@ -7,18 +7,20 @@
   --border : 8px;
   --color-primary: greenyellow;
   --color-secondary: #FF4528 ;
+  --color-bg-navbar: #111;
   --gap-buttons: 0.4em;
   --font-weight: 400;
   --font-family: 'clockicons', cursive;
   --font-family-two: 'Black Ops One', cursive;
   --font-family-text: 'Open Sans', sans-serif;
+  --color-bg-button-menu: rgba(234, 234, 234, 0.3);
 }
 .App {
   height: 100vh;
   text-align: center;
   display: grid;
   place-items: center;
-  color: greenyellow;
+  color: var(--color-primary);
   font-family: var(--font-family-text);
   
 }
@@ -27,12 +29,6 @@
   font-size: 8em;
   font-family: var(--font-family);
 }
-/* .App aside{
-  position: absolute;
-  left: 0;
-  height: 100%;
-  border: 1px solid red;
-} */
 
 #root{
   background-color: black;
@@ -48,6 +44,19 @@
   #root{
     background-color: #eee;
     color: white;
+  }
+  :root{
+    /* --border : 8px;
+    --color-primary: greenyellow;
+    --color-secondary: #FF4528 ;
+    --gap-buttons: 0.4em;
+    --font-weight: 400;
+    --font-family: 'clockicons', cursive;
+    --font-family-two: 'Black Ops One', cursive;
+    --font-family-text: 'Open Sans', sans-serif; */
+    --color-bg-navbar: #999999;
+    --color-primary: rgb(146, 216, 41);
+    --color-bg-button-menu: rgba(37, 36, 36, 0.3);
   }
   h1,h2,h3,p,div,article{
     color: black;
