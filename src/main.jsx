@@ -15,15 +15,19 @@ const router = createBrowserRouter([
     errorElement: <Navigate to='/chronometer'/>,
     children: [
       {
-        path: '/timer',
-        element: <Timer />
-      },
-      {
-        path: '/chronometer/',
+        path: '/',
         element: <Chronometer />
       },
       {
-        path: '/countdown',
+        path: 'timer',
+        element: <Timer />
+      },
+      {
+        path: 'chronometer',
+        element: <Chronometer />
+      },
+      {
+        path: 'countdown',
         element: <h1>CountDown</h1>
       },
       {
@@ -31,14 +35,6 @@ const router = createBrowserRouter([
         element: <h1>Timer</h1>
       }
     ]
-  },
-  {
-    path: '/casa',
-    element: <h1>hola mundo</h1>
-  },
-  {
-    path: '/*',
-    element: <h1>esta es la ruta default</h1>
   }
 ])
 

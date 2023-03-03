@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import './navbar.css'
-import { useState } from 'react'
-// import { useRef } from 'react'
+
 const ITEMS_NAV = ['chronometer', 'timer', 'countdown']
 const Navbar = ({ handleOptionSelected }) => {
   const [activeTab, setActiveTab] = useState(null)
+  const { pathname } = useLocation()
+  const path = pathname.slice(1)
+
+  useEffect(() => {
+    setActiveTab(path)
+  }, [])
   const handle = (item) => {
     setActiveTab(item)
     handleOptionSelected()
