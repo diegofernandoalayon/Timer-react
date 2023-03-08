@@ -1,0 +1,9 @@
+
+.btn-fullscreen{
+  color: var(--color-primary);
+  background: transparent;
+  border: none;
+  display: flex;
+  padding: 2px;
+  cursor: pointer;
+}
