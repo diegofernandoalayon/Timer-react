@@ -15,13 +15,11 @@ const Header = () => {
           isMobile
             ? <button
                 onClick={() => setIsMobile(!isMobile)}
-                style={{ color: 'inherit' }}
               >
                 <CloseMenu width={50} height={50} />
               </button>
             : <button
                 onClick={() => setIsMobile(!isMobile)}
-                style={{ color: 'inherit' }}
               >
                 <Menu width={50} height={50} />
               </button>

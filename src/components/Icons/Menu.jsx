@@ -3,7 +3,7 @@ const Menu = (props) => {
 
     <svg
       height={21}
-      width={12}
+      width={21}
       viewBox="0 0 21 21"
       {...props}
     >

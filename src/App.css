@@ -8,12 +8,16 @@
   --color-primary: greenyellow;
   --color-secondary: #FF4528 ;
   --color-bg-navbar: #111;
+  --color-bg: black;
   --gap-buttons: 0.4em;
   --font-weight: 400;
   --font-family: 'clockicons', cursive;
   --font-family-two: 'Black Ops One', cursive;
   --font-family-text: 'Open Sans', sans-serif;
   --color-bg-button-menu: rgba(234, 234, 234, 0.3);
+  --left: 4px;
+  --top: 4px;
+  --right: 4px;
 }
 .App {
   height: 100vh;
@@ -29,22 +33,38 @@
   font-size: 8em;
   font-family: var(--font-family);
 }
+.container-btn-full{
+  background-color: var(--color-bg-button-menu);
+  border-radius: var(--border);
+  position: absolute;
+  top: var(--top);
+  right: var(--right);
+  color: var(--color-primary);
+
+
+}
+.container-screen{
+  background-color: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #root{
-  background-color: black;
+  background-color: var(--color-bg);
 }
 
 @media (prefers-color-scheme: dark) {
   #root{
-    background-color:black;
+    background-color:var(--color-bg);
   }
   
 }
 @media (prefers-color-scheme: light) {
-  #root{
+  /* #root{
     background-color: #eee;
-    color: white;
-  }
+  
+  } */
   :root{
     /* --border : 8px;
     --color-primary: greenyellow;
@@ -54,6 +74,7 @@
     --font-family: 'clockicons', cursive;
     --font-family-two: 'Black Ops One', cursive;
     --font-family-text: 'Open Sans', sans-serif; */
+    --color-bg: #eee;
     --color-bg-navbar: #999999;
     --color-primary: rgb(146, 216, 41);
     --color-bg-button-menu: rgba(37, 36, 36, 0.3);
