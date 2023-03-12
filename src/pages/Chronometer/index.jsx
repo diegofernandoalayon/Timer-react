@@ -10,16 +10,9 @@ const Chronometer = () => {
   const [timeState, setTimeState] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
   const interval = useRef(0)
-  let con = 0
   const startChronometer = () => {
     interval.current = setInterval(() => {
-      con++
-      const dis = timeState + con
-      if (dis <= 0) {
-        clearInterval(interval.current)
-        setTimerOn(false)
-      }
-      setTimeState(dis)
+      setTimeState((a) => a + 1)
     }, 1000)
   }
   useEffect(() => {
@@ -45,13 +38,15 @@ const Chronometer = () => {
     setTimeState(0)
   }
   // extraer los segundo y minutos para mostrar
+  const hours = Math.floor((timeState % (60 * 60 * 60)) / (60 * 60))
   const minutes = Math.floor((timeState % (60 * 60)) / (60))
   const seconds = Math.floor((timeState % 60))
   document.title = `${minutes}:${seconds} Chronometer`
+  console.log('this is hours:', hours)
 
   return (
     <article>
-      <DisplayTimer minutes={minutes} seconds={seconds} />
+      <DisplayTimer hours={hours} minutes={minutes} seconds={seconds} />
       <div className='btn-chronometer'>
         {
           !timerOn
