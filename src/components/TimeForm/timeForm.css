@@ -3,6 +3,8 @@
   border-radius: var(--border);
   display: grid;
   padding: 20px; 
+  gap: 1rem;
+  
 }
 .inputs-form{
   display: flex;

@@ -7,8 +7,10 @@ import './timeInput.css'
 const TimeInput = ({ title, value, update, up, down }) => {
   const handleChange = (event) => {
     const { value } = event.target
-    if (+value > 59) return update(59)
-    return update(+value)
+    // if (+value > 59) return update(59)
+    if (!isNaN(value)) {
+      return update(+value)
+    }
   }
   return (
     <>

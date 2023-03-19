@@ -66,9 +66,10 @@ export default function Timer () {
     return () => clearInterval(interval.current)
   }, [timerOn])
   // extraer los segundo y minutos para mostrar
+  const hours = Math.floor((timeState % (60 * 60 * 60)) / (60 * 60))
   const minutes = Math.floor((timeState % (60 * 60)) / (60))
   const seconds = Math.floor((timeState % 60))
-  document.title = `${minutes}:${seconds} Timer`
+  document.title = `${hours > 0 ? hours + ':' : ''}${minutes}:${seconds} Timer`
 
   return (
     <article>
@@ -79,10 +80,11 @@ export default function Timer () {
               handleStart={handleStart}
               handleEditSetted={handleEditSetted}
               handleEdit={handleEdit}
+              initialHours={hours}
               initialMinutes={minutes}
               initialSeconds={seconds}
             />
-          : <DisplayTimer minutes={minutes} seconds={seconds} />
+          : <DisplayTimer hours={hours} minutes={minutes} seconds={seconds} />
       }
       <div className='btn-timer'>
         {

@@ -5,26 +5,32 @@ import TimeInput from '../TimeInput'
 import useForm from '../../hooks/useForm'
 // styles
 import './timeForm.css'
-const TimeForm = ({ initialMinutes, initialSeconds, title, handleEdit, handleStart, handleEditSetted }) => {
+const TimeForm = ({ initialHours, initialMinutes, initialSeconds, title, handleEdit, handleStart, handleEditSetted }) => {
   const {
+    hours,
     minutes,
     seconds,
+    updateHours,
     updateMinutes,
     updateSeconds,
+    incrementHours,
+    decrementHours,
     incrementMinutes,
     decrementMinutes,
     incrementSeconds,
     decrementSeconds
-  } = useForm({ initialMinutes, initialSeconds })
+  } = useForm({ initialHours, initialMinutes, initialSeconds })
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (minutes || seconds !== 0) {
-      const timeSetted = +minutes * 60 + +seconds
+      const timeSetted = (+hours * 60 * 60) + (+minutes * 60) + (+seconds)
+
       handleEditSetted(timeSetted)
     }
     handleStart()
   }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -34,6 +40,13 @@ const TimeForm = ({ initialMinutes, initialSeconds, title, handleEdit, handleSta
       <div
         className='inputs-form'
       >
+        <TimeInput
+          title='hours'
+          value={hours}
+          update={updateHours}
+          up={incrementHours}
+          down={decrementHours}
+        />
         <TimeInput
           title='minutes'
           value={minutes}
