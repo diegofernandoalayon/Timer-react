@@ -1,3 +1,4 @@
+import './displaytimer.css'
 export default function DisplayTimer ({ hours = 0, minutes, seconds } = {}) {
   const addZero = (value) => {
     return value < 10 ? '0' + value : value
@@ -5,9 +6,23 @@ export default function DisplayTimer ({ hours = 0, minutes, seconds } = {}) {
   return (
     <>
       <h2
-        style={{ color: 'var(--color-primary)' }}
+        className='container-display'
       >
-        {hours !== 0 ? `${addZero(hours)}:` : null}{addZero(minutes)}:{addZero(seconds)}
+        {
+          hours !== 0 && <span className='text-display'>hours</span>
+        }
+        <span>{hours !== 0 && `${addZero(hours)}`}</span>
+
+        <span className={`text-display ${minutes === 0 && 'text-opacity'}`}>minutes</span>
+        {
+          hours !== 0 && <span className='separators-display' >:</span>
+        }
+
+        <span className={`${minutes === 0 && 'text-opacity'}`}>{addZero(minutes)}</span>
+        <span className='text-display'>seconds</span>
+        <span className= {`separators-display ${minutes === 0 && 'text-opacity'}`}>:</span>
+        <span>{addZero(seconds)}</span>
+
       </h2>
     </>
   )

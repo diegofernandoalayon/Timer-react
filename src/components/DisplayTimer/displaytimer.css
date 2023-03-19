@@ -1,0 +1,31 @@
+.container-display{
+  display: flex;
+  flex-direction: column;
+  color: var(--color-primary);
+}
+.text-display{
+  font-family: inherit;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text-dispay);
+  color: var(--color-secondary);
+}
+.separators-display{
+  display: none;
+}
+.text-opacity{
+  opacity: var(--text-opacity);
+}
+
+@media screen and (min-width: 500px){
+
+ .container-display{
+
+  flex-direction: row;
+ }
+ .text-display{
+  display:none;
+ }
+ .separators-display{
+  display: block;
+ }
+}

@@ -15,6 +15,8 @@
   --font-family-two: 'Black Ops One', cursive;
   --font-family-text: 'Open Sans', sans-serif;
   --color-bg-button-menu: rgba(234, 234, 234, 0.3);
+  --font-size-text-dispay: 1.5rem;
+  --text-opacity: 0.3;
   --left: 4px;
   --top: 4px;
   --right: 4px;
