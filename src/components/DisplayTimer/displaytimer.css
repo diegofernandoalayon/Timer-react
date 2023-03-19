@@ -13,7 +13,12 @@
   display: none;
 }
 .text-opacity{
-  opacity: var(--text-opacity);
+  
+  /* opacity: var(--text-opacity); */
+  color: var(--color-secondary-opacity);
+}
+.number-opacity{
+  color: var(--color-primary-opacity);
 }
 
 @media screen and (min-width: 500px){

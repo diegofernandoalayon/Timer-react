@@ -18,7 +18,7 @@ export default function DisplayTimer ({ hours = 0, minutes, seconds } = {}) {
           hours !== 0 && <span className='separators-display' >:</span>
         }
 
-        <span className={`${minutes === 0 && hours === 0 && 'text-opacity'}`}>{addZero(minutes)}</span>
+        <span className={`${minutes === 0 && hours === 0 && 'number-opacity'}`}>{addZero(minutes)}</span>
         <span className='text-display'>seconds</span>
         <span className= {`separators-display ${minutes === 0 && hours === 0 && 'text-opacity'} `}>:</span>
         <span>{addZero(seconds)}</span>
