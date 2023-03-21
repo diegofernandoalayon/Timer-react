@@ -50,7 +50,10 @@ export default function Timer () {
     window.localStorage.setItem('user-settings', JSON.stringify({ ...userSettingsParsed, time }))
   }
   useEffect(() => {
-    const userSettings = window.localStorage.getItem('user-settings')
+    const userSettings = window.localStorage.getItem('user-settings') // ?? JSON.stringify({ time: 0 })
+    if (!userSettings) return
+    console.log(userSettings)
+
     const { time } = JSON.parse(userSettings)
     if (time) {
       setTimeState(time)

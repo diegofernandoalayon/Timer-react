@@ -14,18 +14,19 @@ function Countdown () {
   }
   useEffect(() => {
     const userSettings = JSON.parse(window.localStorage.getItem('user-settings'))
+    if (!userSettings) return
     const { count } = userSettings
     if (count) setTimeRef(count)
   }, [])
 
   useEffect(() => {
-    startTimer()
+    if (timeRef > 0) startTimer()
     return () => clearInterval(interval.current)
   }, [timeRef])
   const handleClick = () => {
     const count = new Date('Jun 14, 2023 23:59:00').getTime()
     const userSettings = window.localStorage.getItem('user-settings')
-    console.log('userSettings: ', userSettings)
+    setTimeRef(count)
     const userSettingsParsed = JSON.parse(userSettings)
     window.localStorage.setItem('user-settings', JSON.stringify({ ...userSettingsParsed, count }))
   }
