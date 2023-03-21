@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
@@ -7,6 +7,7 @@ import './index.css'
 import Timer from './pages/Timer'
 // import TimeForm from './components/TimeForm'
 import Chronometer from './pages/Chronometer'
+import Countdown from './pages/Countdown'
 // import TimeInput from './components/TimeInput'
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'countdown',
-        element: <h1>CountDown</h1>
+        element: <Countdown />
       },
       {
         path: '/timero',
@@ -39,7 +40,5 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <RouterProvider router={router}/>
-  </React.StrictMode>
 )

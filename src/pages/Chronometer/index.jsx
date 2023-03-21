@@ -42,7 +42,6 @@ const Chronometer = () => {
   const minutes = Math.floor((timeState % (60 * 60)) / (60))
   const seconds = Math.floor((timeState % 60))
   document.title = `${minutes}:${seconds} Chronometer`
-  console.log('this is hours:', hours)
 
   return (
     <article>

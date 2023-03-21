@@ -24,7 +24,7 @@
   --right: 4px;
 }
 .App {
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
   display: grid;
   place-items: center;
