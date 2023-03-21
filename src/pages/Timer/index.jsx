@@ -45,13 +45,14 @@ export default function Timer () {
   const handleEditSetted = (time) => {
     setTimeState(time)
     setTimerReset(time)
-    window.localStorage.setItem('user-settings', JSON.stringify({ time }))
+    const userSettings = window.localStorage.getItem('user-settings')
+    const userSettingsParsed = JSON.parse(userSettings)
+    window.localStorage.setItem('user-settings', JSON.stringify({ ...userSettingsParsed, time }))
   }
   useEffect(() => {
     const userSettings = window.localStorage.getItem('user-settings')
-    if (userSettings) {
-      const { time } = JSON.parse(userSettings)
-
+    const { time } = JSON.parse(userSettings)
+    if (time) {
       setTimeState(time)
       setTimerReset(time)
     }
