@@ -1,0 +1,36 @@
+.container-display-countdown{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  color: var(--color-primary);
+}
+.text-display-countdown{
+  font-family: inherit;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text-dispay);
+  color: var(--color-text-dispay,var(--color-secondary));
+}
+.digit-countdown{
+  display: flex;
+  flex-direction: column;
+}
+.separators-display-countdown{
+  display: none;
+ }
+@media screen and (min-width: 700px){
+
+  .container-display-countdown{
+ 
+   flex-direction: row;
+  }
+  
+  .separators-display-countdown{
+   display: block;
+  }
+ }
+ @media screen and (max-height: 750px){
+  .container-display-countdown{
+    font-size: 6rem !important;
+    margin-bottom: 1.2rem;
+  }
+ }
