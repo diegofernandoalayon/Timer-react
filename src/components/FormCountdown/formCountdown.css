@@ -1,0 +1,31 @@
+.form-countdown{
+  background-color: var(--color-bg-navbar);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border);
+  padding: 20px;
+  align-items: center;
+  gap: 1rem;
+}
+.form-countdown-inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 50%;
+  justify-content: center;
+  color: var(--color-primary);
+  /* align-items: center; */
+}
+.form-countdown-buttons{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+}
+.form-countdown input {
+  border: none;
+  padding: 0.5em;
+  font-size: 1rem;
+  font-family: var(--font-family-text);
+  color: var(--color-primary);
+  background-color: rgba(0,0,0,0.3);
+}
