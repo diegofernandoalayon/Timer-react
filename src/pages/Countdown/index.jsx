@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from 'react'
 // import DisplayTimer from '../../components/DisplayTimer'
 import Button from '../../components/Button'
 import DisplayCountdown from '../../components/DisplayCountdown'
+import FormCountdown from '../../components/FormCountdown'
 function Countdown () {
   const [timeState, setTimeState] = useState(0)
   const [timeRef, setTimeRef] = useState(0)
+  const [isEditing, setIsEditing] = useState(false)
   const interval = useRef(0)
   const startTimer = () => {
     setTimeState(+timeRef - +new Date().getTime())
@@ -23,12 +25,24 @@ function Countdown () {
     if (timeRef > 0) startTimer()
     return () => clearInterval(interval.current)
   }, [timeRef])
-  const handleClick = () => {
-    const count = new Date('Jun 14, 2023 23:59:00').getTime()
+  const handleSetted = (newDate) => {
+    const count = new Date(newDate).getTime()
     const userSettings = window.localStorage.getItem('user-settings')
     setTimeRef(count)
     const userSettingsParsed = JSON.parse(userSettings)
     window.localStorage.setItem('user-settings', JSON.stringify({ ...userSettingsParsed, count }))
+    setIsEditing((ac) => !ac)
+  }
+  const handleCancel = () => {
+    setIsEditing((ac) => !ac)
+  }
+  const handleClick = () => {
+    setIsEditing((ac) => !ac)
+    // const count = new Date('Jun 14, 2023 23:59:00').getTime()
+    // const userSettings = window.localStorage.getItem('user-settings')
+    // setTimeRef(count)
+    // const userSettingsParsed = JSON.parse(userSettings)
+    // window.localStorage.setItem('user-settings', JSON.stringify({ ...userSettingsParsed, count }))
   }
   const days = Math.floor(timeState / (1000 * 60 * 60 * 24))
   const hours = Math.floor((timeState % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
@@ -47,6 +61,10 @@ function Countdown () {
           />
 
         <Button onClick={handleClick}>Establecer</Button>
+        {
+          isEditing && <FormCountdown handleSetted={handleSetted} handleCancel={handleCancel}/>
+        }
+
       </section>
     </>
   )
