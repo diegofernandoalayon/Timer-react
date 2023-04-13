@@ -41,8 +41,7 @@ const Chronometer = () => {
   const hours = Math.floor((timeState % (60 * 60 * 60)) / (60 * 60))
   const minutes = Math.floor((timeState % (60 * 60)) / (60))
   const seconds = Math.floor((timeState % 60))
-  document.title = `${minutes}:${seconds} Chronometer`
-
+  document.title = `${hours > 0 ? hours + ':' : ''}${minutes}:${seconds} | Chronometer`
   return (
     <article>
       <DisplayTimer hours={hours} minutes={minutes} seconds={seconds} />
