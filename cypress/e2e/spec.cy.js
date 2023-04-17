@@ -1,5 +1,5 @@
 
-describe.only('validate chronometer', () => {
+describe('validate chronometer', () => {
   before(() => {
     cy.visit('http://localhost:3000')
   })
@@ -23,9 +23,9 @@ describe.only('validate chronometer', () => {
     })
   })
 })
-describe('Timer app', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3000')
+describe.only('Timer app', () => {
+  before(() => {
+    cy.visit('http://localhost:3000/timer')
   })
 
   it('open app ', () => {
@@ -34,12 +34,14 @@ describe('Timer app', () => {
     cy.contains('Edit')
   })
   it('setted time in timer', () => {
+    cy.contains('timer').click()
     cy.contains('Edit').click()
     cy.get('.input-container div input').first().type('1') // pimer input
     cy.get('.input-container div input').eq(1).type('23') // seleccionar segundo
     cy.contains('Establecer').click()
     cy.wait(2000)
     cy.contains('parar').click()
+    cy.get('.container-display > :nth-child(2)').eq(0).should('have.text', '01')
   })
   // it('stop timer', () => {
   //   cy.wait(200)
