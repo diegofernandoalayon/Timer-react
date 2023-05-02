@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Button from '../../components/Button'
 import DisplayTimer from '../../components/DisplayTimer'
 import TimeForm from '../../components/TimeForm'
+import audio1 from '../../audio/timer.wav'
 // import FormTimer from '../../components/FormTimer'
 // stylesheet
 import './timer.css'
@@ -21,14 +22,18 @@ export default function Timer () {
       if (dis <= 0) {
         clearInterval(interval.current)
         setTimerOn(false)
+        const audioo = new Audio(audio1)
+        audioo.play()
       }
       setTimeState(dis)
     }, 1000)
   }
 
   const handleStart = () => {
-    setTimerOn(true)
-    setIsEdit(false)
+    if (timeState) {
+      setTimerOn(true)
+      setIsEdit(false)
+    }
   }
 
   const handlePause = () => {
@@ -52,7 +57,6 @@ export default function Timer () {
   useEffect(() => {
     const userSettings = window.localStorage.getItem('user-settings') // ?? JSON.stringify({ time: 0 })
     if (!userSettings) return
-    console.log(userSettings)
 
     const { time } = JSON.parse(userSettings)
     if (time) {
