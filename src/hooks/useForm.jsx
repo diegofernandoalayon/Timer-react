@@ -44,16 +44,19 @@ const reducer = (state, action) => {
         seconds: state.seconds + 1
       }
     case ACTIONS.DECREMENT_HOURS:
+      if (state.hours <= 0) return { ...state }
       return {
         ...state,
         hours: state.hours - 1
       }
     case ACTIONS.DECREMENT_MINUTES:
+      if (state.minutes <= 0) return { ...state }
       return {
         ...state,
         minutes: state.minutes - 1
       }
     case ACTIONS.DECREMENT_SECONDS:
+      if (state.seconds <= 0) return { ...state }
       return {
         ...state,
         seconds: state.seconds - 1
