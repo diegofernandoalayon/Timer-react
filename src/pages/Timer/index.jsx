@@ -5,7 +5,6 @@ import Button from '../../components/Button'
 import DisplayTimer from '../../components/DisplayTimer'
 import TimeForm from '../../components/TimeForm'
 import audio1 from '../../audio/timer.wav'
-// import FormTimer from '../../components/FormTimer'
 // stylesheet
 import './timer.css'
 export default function Timer () {
