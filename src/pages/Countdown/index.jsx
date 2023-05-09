@@ -3,14 +3,24 @@ import { useState, useEffect, useRef } from 'react'
 import Button from '../../components/Button'
 import DisplayCountdown from '../../components/DisplayCountdown'
 import FormCountdown from '../../components/FormCountdown'
+import audio1 from '../../audio/timer.wav'
 function Countdown () {
   const [timeState, setTimeState] = useState(0)
   const [timeRef, setTimeRef] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const interval = useRef(0)
   const startTimer = () => {
-    setTimeState(+timeRef - +new Date().getTime())
+    const distance = +timeRef - +new Date().getTime()
+    if (distance <= 0) return
+    setTimeState(distance)
     interval.current = setInterval(() => {
+      const dis = +timeRef - +new Date().getTime()
+      if (dis <= 0) {
+        clearInterval(interval.current)
+        const audioo = new Audio(audio1)
+        audioo.play()
+        return
+      }
       setTimeState(+timeRef - +new Date().getTime())
     }, 1000)
   }
