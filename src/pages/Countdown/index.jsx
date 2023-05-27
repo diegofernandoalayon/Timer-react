@@ -59,7 +59,7 @@ function Countdown () {
   const minutes = Math.floor((timeState % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((timeState % (1000 * 60)) / 1000)
 
-  document.title = `${days > 0 ? days + ':' : ''}${hours > 0 ? hours + ':' : ''}${minutes}:${seconds} | Countdown`
+  document.title = `${days > 0 ? days + ':' : ''}${hours > 0 || days > 0 ? hours + ':' : ''}${minutes}:${seconds} | Countdown`
   return (
     <>
       <section>
