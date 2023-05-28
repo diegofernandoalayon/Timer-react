@@ -54,37 +54,15 @@
   align-items: center;
 }
 
-#root{
+.light-mode {
+  --color-bg: #eee;
+  --color-bg-navbar: #999999;
+  --color-primary: rgb(146, 216, 41);
+  --color-primary-opacity:rgb(146, 216, 41,0.308);
+  --color-bg-button-menu: rgba(37, 36, 36, 0.3);
+  
+}
+.App {
   background-color: var(--color-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  #root{
-    background-color:var(--color-bg);
-  }
-  
-}
-@media (prefers-color-scheme: light) {
-  /* #root{
-    background-color: #eee;
-  
-  } */
-  :root{
-    /* --border : 8px;
-    --color-primary: greenyellow;
-    --color-secondary: #FF4528 ;
-    --gap-buttons: 0.4em;
-    --font-weight: 400;
-    --font-family: 'clockicons', cursive;
-    --font-family-two: 'Black Ops One', cursive;
-    --font-family-text: 'Open Sans', sans-serif; */
-    --color-bg: #eee;
-    --color-bg-navbar: #999999;
-    --color-primary: rgb(146, 216, 41);
-    --color-primary-opacity:rgb(146, 216, 41,0.308);
-    --color-bg-button-menu: rgba(37, 36, 36, 0.3);
-  }
-  h1,h2,h3,p,div,article{
-    color: black;
-  }
-}
