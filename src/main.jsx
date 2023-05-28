@@ -8,11 +8,13 @@ import Timer from './pages/Timer'
 // import TimeForm from './components/TimeForm'
 import Chronometer from './pages/Chronometer'
 import Countdown from './pages/Countdown'
+import { SettingsContextProvider } from './context/SettingsContext'
+import { Suspense } from 'react'
 // import TimeInput from './components/TimeInput'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <SettingsContextProvider> <Suspense fallback='cargando'><App /></Suspense> </SettingsContextProvider>,
     errorElement: <Navigate to='/chronometer'/>,
     children: [
       {
