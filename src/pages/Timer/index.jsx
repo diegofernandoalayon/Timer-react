@@ -1,5 +1,5 @@
 // react
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 // components
 import Button from '../../components/Button'
 import DisplayTimer from '../../components/DisplayTimer'
@@ -7,11 +7,13 @@ import TimeForm from '../../components/TimeForm'
 import audio1 from '../../audio/timer.wav'
 // stylesheet
 import './timer.css'
+import { SettingsContext } from '../../context/SettingsContext'
 export default function Timer () {
   const [timerReset, setTimerReset] = useState(0)
   const [timeState, setTimeState] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
+  const { isMuted } = useContext(SettingsContext)
   const interval = useRef(0)
   let con = 0
   const startTimer = () => {
@@ -21,8 +23,10 @@ export default function Timer () {
       if (dis <= 0) {
         clearInterval(interval.current)
         setTimerOn(false)
-        const audioo = new Audio(audio1)
-        audioo.play()
+        if (!isMuted) {
+          const audioo = new Audio(audio1)
+          audioo.play()
+        }
       }
       setTimeState(dis)
     }, 1000)

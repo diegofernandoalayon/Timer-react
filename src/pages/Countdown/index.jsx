@@ -1,13 +1,16 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 // import DisplayTimer from '../../components/DisplayTimer'
 import Button from '../../components/Button'
 import DisplayCountdown from '../../components/DisplayCountdown'
 import FormCountdown from '../../components/FormCountdown'
 import audio1 from '../../audio/timer.wav'
+import { SettingsContext } from '../../context/SettingsContext'
+
 function Countdown () {
   const [timeState, setTimeState] = useState(0)
   const [timeRef, setTimeRef] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
+  const { isMuted } = useContext(SettingsContext)
   const interval = useRef(0)
   const startTimer = () => {
     const distance = +timeRef - +new Date().getTime()
@@ -17,8 +20,10 @@ function Countdown () {
       const dis = +timeRef - +new Date().getTime()
       if (dis <= 0) {
         clearInterval(interval.current)
-        const audioo = new Audio(audio1)
-        audioo.play()
+        if (!isMuted) {
+          const audioo = new Audio(audio1)
+          audioo.play()
+        }
         return
       }
       setTimeState(+timeRef - +new Date().getTime())
