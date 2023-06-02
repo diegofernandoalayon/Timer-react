@@ -5,6 +5,7 @@ import DisplayCountdown from '../../components/DisplayCountdown'
 import FormCountdown from '../../components/FormCountdown'
 import audio1 from '../../audio/timer.wav'
 import { SettingsContext } from '../../context/SettingsContext'
+import MyHelmet from '../../components/MyHelmet'
 
 function Countdown () {
   const [timeState, setTimeState] = useState(0)
@@ -64,9 +65,16 @@ function Countdown () {
   const minutes = Math.floor((timeState % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((timeState % (1000 * 60)) / 1000)
 
-  document.title = `${days > 0 ? days + ':' : ''}${hours > 0 || days > 0 ? hours + ':' : ''}${minutes}:${seconds} | Countdown`
+  // document.title = `${days > 0 ? days + ':' : ''}${hours > 0 || days > 0 ? hours + ':' : ''}${minutes}:${seconds} | Countdown`
   return (
     <>
+      <MyHelmet>
+        <title>
+          {
+            `${days > 0 ? days + ':' : ''}${hours > 0 || days > 0 ? hours + ':' : ''}${minutes}:${seconds} | Countdown`
+          }
+        </title>
+      </MyHelmet>
       <section>
           <DisplayCountdown
             days={days}
