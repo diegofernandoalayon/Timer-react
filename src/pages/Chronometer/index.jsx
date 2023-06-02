@@ -5,6 +5,9 @@ import Button from '../../components/Button'
 import DisplayTimer from '../../components/DisplayTimer'
 // stylesheet
 import './chronometer.css'
+// utils
+import { calculateTimeSeconds } from '../../utils'
+import MyHelmet from '../../components/MyHelmet'
 
 const Chronometer = () => {
   const [timeState, setTimeState] = useState(0)
@@ -38,12 +41,12 @@ const Chronometer = () => {
     setTimeState(0)
   }
   // extraer los segundo y minutos para mostrar
-  const hours = Math.floor((timeState % (60 * 60 * 60)) / (60 * 60))
-  const minutes = Math.floor((timeState % (60 * 60)) / (60))
-  const seconds = Math.floor((timeState % 60))
-  document.title = `${hours > 0 ? hours + ':' : ''}${minutes}:${seconds} | Chronometer`
+  const { hours, minutes, seconds } = calculateTimeSeconds(timeState)
   return (
     <article>
+      <MyHelmet>
+        <title>{`${hours > 0 ? hours + ':' : ''}${minutes}:${seconds} | Chronometer`}</title>
+      </MyHelmet>
       <DisplayTimer hours={hours} minutes={minutes} seconds={seconds} />
       <div className='btn-chronometer'>
         {

@@ -8,6 +8,8 @@ import audio1 from '../../audio/timer.wav'
 // stylesheet
 import './timer.css'
 import { SettingsContext } from '../../context/SettingsContext'
+import { calculateTimeSeconds } from '../../utils'
+import MyHelmet from '../../components/MyHelmet'
 export default function Timer () {
   const [timerReset, setTimerReset] = useState(0)
   const [timeState, setTimeState] = useState(0)
@@ -77,13 +79,14 @@ export default function Timer () {
     return () => clearInterval(interval.current)
   }, [timerOn])
   // extraer los segundo y minutos para mostrar
-  const hours = Math.floor((timeState % (60 * 60 * 60)) / (60 * 60))
-  const minutes = Math.floor((timeState % (60 * 60)) / (60))
-  const seconds = Math.floor((timeState % 60))
-  document.title = `${hours > 0 ? hours + ':' : ''}${minutes}:${seconds} Timer`
-
+  const { hours, minutes, seconds } = calculateTimeSeconds(timeState)
   return (
     <article>
+      <MyHelmet>
+        <title>
+          {`${hours > 0 ? hours + ':' : ''}${minutes}:${seconds} Timer`}
+        </title>
+      </MyHelmet>
       {
         isEdit
           ? <TimeForm

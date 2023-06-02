@@ -6,6 +6,7 @@ import FormCountdown from '../../components/FormCountdown'
 import audio1 from '../../audio/timer.wav'
 import { SettingsContext } from '../../context/SettingsContext'
 import MyHelmet from '../../components/MyHelmet'
+import { calculateTimeMilli } from '../../utils'
 
 function Countdown () {
   const [timeState, setTimeState] = useState(0)
@@ -54,18 +55,8 @@ function Countdown () {
   }
   const handleClick = () => {
     setIsEditing((ac) => !ac)
-    // const count = new Date('Jun 14, 2023 23:59:00').getTime()
-    // const userSettings = window.localStorage.getItem('user-settings')
-    // setTimeRef(count)
-    // const userSettingsParsed = JSON.parse(userSettings)
-    // window.localStorage.setItem('user-settings', JSON.stringify({ ...userSettingsParsed, count }))
   }
-  const days = Math.floor(timeState / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((timeState % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((timeState % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((timeState % (1000 * 60)) / 1000)
-
-  // document.title = `${days > 0 ? days + ':' : ''}${hours > 0 || days > 0 ? hours + ':' : ''}${minutes}:${seconds} | Countdown`
+  const { days, hours, minutes, seconds } = calculateTimeMilli(timeState)
   return (
     <>
       <MyHelmet>

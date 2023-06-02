@@ -6,7 +6,7 @@ const MyHelmet = ({ children }) => {
   const result = Children.toArray(children)
   const title = result.find(e => e.type === 'title')
   if (title) {
-    console.log(title.props.children)
+    // console.log(title.props.children)
     document.title = title.props?.children ?? pathname.slice(1)
   }
   return (
