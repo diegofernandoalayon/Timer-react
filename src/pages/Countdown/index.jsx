@@ -12,20 +12,19 @@ function Countdown () {
   const [timeState, setTimeState] = useState(0)
   const [timeRef, setTimeRef] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
+  const [isEnded, setIsEnded] = useState(false)
   const { isMuted } = useContext(SettingsContext)
   const interval = useRef(0)
   const startTimer = () => {
     const distance = +timeRef - +new Date().getTime()
     if (distance <= 0) return
+    setIsEnded(false)
     setTimeState(distance)
     interval.current = setInterval(() => {
       const dis = +timeRef - +new Date().getTime()
       if (dis <= 0) {
         clearInterval(interval.current)
-        if (!isMuted) {
-          const audioo = new Audio(audio1)
-          audioo.play()
-        }
+        setIsEnded(true)
         return
       }
       setTimeState(+timeRef - +new Date().getTime())
@@ -42,6 +41,19 @@ function Countdown () {
     if (timeRef > 0) startTimer()
     return () => clearInterval(interval.current)
   }, [timeRef])
+
+  useEffect(() => {
+    if (isEnded) {
+      playAudio()
+    }
+  }, [isEnded])
+  //
+  const playAudio = () => {
+    if (!isMuted) {
+      const audioo = new Audio(audio1)
+      audioo.play()
+    }
+  }
   const handleSetted = (newDate) => {
     const count = new Date(newDate).getTime()
     const userSettings = window.localStorage.getItem('user-settings')

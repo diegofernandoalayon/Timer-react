@@ -15,25 +15,53 @@ export default function Timer () {
   const [timeState, setTimeState] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
+  const [isEnded, setIsEnded] = useState(false)
   const { isMuted } = useContext(SettingsContext)
   const interval = useRef(0)
   let con = 0
   const startTimer = () => {
+    setIsEnded(false)
     interval.current = setInterval(() => {
       con++
       const dis = timeState - con
       if (dis <= 0) {
         clearInterval(interval.current)
         setTimerOn(false)
-        if (!isMuted) {
-          const audioo = new Audio(audio1)
-          audioo.play()
-        }
+        setIsEnded(true)
       }
       setTimeState(dis)
     }, 1000)
   }
+  useEffect(() => {
+    const userSettings = window.localStorage.getItem('user-settings') // ?? JSON.stringify({ time: 0 })
+    if (!userSettings) return
 
+    const { time } = JSON.parse(userSettings)
+    if (time) {
+      setTimeState(time)
+      setTimerReset(time)
+    }
+  }, [])
+  useEffect(() => {
+    if (timerOn) {
+      startTimer()
+    } else {
+      clearInterval(interval.current)
+    }
+
+    return () => clearInterval(interval.current)
+  }, [timerOn])
+  useEffect(() => {
+    if (isEnded) {
+      playAudio()
+    }
+  }, [isEnded])
+  const playAudio = () => {
+    if (!isMuted) {
+      const audioo = new Audio(audio1)
+      audioo.play()
+    }
+  }
   const handleStart = () => {
     if (timeState) {
       setTimerOn(true)
@@ -59,25 +87,7 @@ export default function Timer () {
     const userSettingsParsed = JSON.parse(userSettings)
     window.localStorage.setItem('user-settings', JSON.stringify({ ...userSettingsParsed, time }))
   }
-  useEffect(() => {
-    const userSettings = window.localStorage.getItem('user-settings') // ?? JSON.stringify({ time: 0 })
-    if (!userSettings) return
 
-    const { time } = JSON.parse(userSettings)
-    if (time) {
-      setTimeState(time)
-      setTimerReset(time)
-    }
-  }, [])
-  useEffect(() => {
-    if (timerOn) {
-      startTimer()
-    } else {
-      clearInterval(interval.current)
-    }
-
-    return () => clearInterval(interval.current)
-  }, [timerOn])
   // extraer los segundo y minutos para mostrar
   const { hours, minutes, seconds } = calculateTimeSeconds(timeState)
   return (
