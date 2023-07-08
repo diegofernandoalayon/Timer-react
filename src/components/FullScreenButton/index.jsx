@@ -5,6 +5,7 @@ import './fullscreenbutton.css'
 const FullScreenButton = ({ element }) => {
   const [isFullScreen, setIsFullScreen] = useState(false)
   const handleScreen = () => {
+    console.log(window.innerHeight + 'x' + window.screen.height)
     if (window.innerHeight === window.screen.height) {
       document.exitFullscreen()
       setIsFullScreen(false)
